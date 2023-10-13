@@ -44,7 +44,7 @@
           <div class="row justify-content-between">
             <form
               class="col-1"
-              action="/comment/likeComment/<%=comments[i]._id %>?_method=PUT"
+              action="/comment/likeComment/<%=post._id%>/<%=comments[i]._id %>?_method=PUT"
               method="POST"
             >
               <button class="btn btn-primary fa fa-thumbs-up" type="submit"></button>
@@ -52,7 +52,7 @@
             <h3 class="col-3">Likes: <%= comments[i].likes %></h3>
             <%if(post.user == user.id){ %>
             <form
-              action="/comment/deleteComment/<%= comments[i]._id %>?_method=DELETE"
+              action="/comment/deleteComment/<%=post._id%>/<%= comments[i]._id %>?_method=DELETE"
               method="POST"
               class="col-3"
             >
