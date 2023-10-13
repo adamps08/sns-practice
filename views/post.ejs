@@ -40,7 +40,7 @@
     <ul>
       <% for(var i=0; i<comments.length; i++) {%>
         <li class="col-6 justify-content-between mt-5">
-          <%= comments[i].comment%>
+          <span class="mr-4"><%= comments[i].createdBy%>: "<%= comments[i].comment%>"</span> 
           <div class="row justify-content-between">
             <form
               class="col-1"
@@ -50,7 +50,8 @@
               <button class="btn btn-primary fa fa-thumbs-up" type="submit"></button>
             </form>
             <h3 class="col-3">Likes: <%= comments[i].likes %></h3>
-            <%if(post.user == user.id){ %>
+           
+            <%if(comments[i].createdById == user.id){ %>
             <form
               action="/comment/deleteComment/<%=post._id%>/<%= comments[i]._id %>?_method=DELETE"
               method="POST"
@@ -59,6 +60,7 @@
               <button class="btn btn-primary fa fa-trash" type="submit"></button>
             </form>
             <%}%>
+            
           </div>
         </li>
       <% } %>

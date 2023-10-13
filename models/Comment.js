@@ -9,10 +9,6 @@ const CommentSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
   post: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Post",
@@ -20,6 +16,14 @@ const CommentSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  createdById: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
+  createdBy: {
+    type: String,
+    ref: "User"
   },
 });
 
