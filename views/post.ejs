@@ -1,32 +1,37 @@
 <%- include('partials/header') -%>
 <div class="container">
   <div class="row justify-content-center mt-5">
-    <div class="col-6">
+    <div class="text-center">
       <h2><%= post.title %></h2>
       <img class="img-fluid" src="<%= post.image%>" />
-      <div class="row justify-content-between">
-        <form
-          class="col-1"
-          action="/post/likePost/<%= post.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
-        </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
-        <%if(post.user == user.id){ %>
-        <form
-          action="/post/deletePost/<%= post.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
-        </form>
-        <%}%>
+      <div class="text-center">
+        <p><%= post.caption %></p>
+      </div>
+      <div class="row justify-content-center align-items-center">
+        <div class="col-4 text-center">
+          <form
+            action="/post/likePost/<%= post.id %>?_method=PUT"
+            method="POST"
+          >
+            <button class="btn btn-primary fa fa-heart" type="submit"></button>
+          </form>
+        </div>
+        <div class="col-4 text-center">
+          <h3>Likes: <%= post.likes %></h3>
+        </div>
+        <% if (post.user == user.id) { %>
+          <div class="col-4 text-center">
+            <form
+              action="/post/deletePost/<%= post.id %>?_method=DELETE"
+              method="POST"
+            >
+              <button class="btn btn-primary fa fa-trash" type="submit"></button>
+            </form>
+          </div>
+        <% } %>
       </div>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
-    </div>
+  <!-- Comments -->
     <div class="mt-5">
       <h2>Add a comment</h2>
       <form action="/comment/createComment/<%=post._id%>" method="POST">
@@ -40,7 +45,7 @@
     <ul>
       <% for(var i=0; i<comments.length; i++) {%>
         <li class="col-6 justify-content-between mt-5">
-          <span class="mr-4"><%= comments[i].createdBy%>: "<%= comments[i].comment%>"</span> 
+          <span class="mr-4"><%= comments[i].createdBy%>: "<%= comments[i].comment%>" </span><span><%= comments[i].createdAt.toDateString()%></span> 
           <div class="row justify-content-between">
             <form
               class="col-1"
@@ -49,7 +54,7 @@
             >
               <button class="btn btn-primary fa fa-thumbs-up" type="submit"></button>
             </form>
-            <h3 class="col-3">Likes: <%= comments[i].likes %></h3>
+            <h3 class="col-8"><%= comments[i].likes %></h3>
            
             <%if(comments[i].createdById == user.id){ %>
             <form
@@ -71,6 +76,7 @@
     </div>
   </div>
 </div>
+
 
 <%- include('partials/footer') -%>
 
