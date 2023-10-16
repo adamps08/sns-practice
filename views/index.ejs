@@ -1,11 +1,20 @@
-<%- include('partials/header') -%>
+<%- include('partials/login') -%>
 
 <main class="container">
+    <div class="row justify-content-around mt-5 text-center">
+        <span>The #1 Social Network for Photo Sharing</span>
+        <div class="d-flex justify-content-center">
+          <img class="img-fluid mainLogo" src="https://res.cloudinary.com/dvgnmh1gb/image/upload/v1696467212/jht6wbpqmi1q1uofcvgf.jpg">
+        </div>
+        
+      </div>
     <div class="row justify-content-around mt-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
+        <a href="/login" class="col-3 btn btn-primary loginPage"> Login</a>
+        <a href="/signup" class="col-3 btn btn-primary loginPage"> Signup</a>
     </div>
 </main>
     
 
 <%- include('partials/footer') -%>
+
+

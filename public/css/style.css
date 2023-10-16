@@ -1,0 +1,16 @@
+.mainLogo{
+    width:50%;
+}
+
+
+.bannerLogo{
+    width:15%;
+}
+
+.bannerBackground{
+    background-color: aqua;
+}
+
+.loginPage, .btn{
+    background-color: rgb(216, 92, 189);
+}
