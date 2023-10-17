@@ -13,4 +13,33 @@
 
 .loginPage, .btn{
     background-color: rgb(216, 92, 189);
+    border-color:  rgb(216, 92, 189);
 }
+
+.btn-primary:hover{
+    background-color: rgba(216, 92, 189, 0.603);
+    border-color:  rgb(216, 92, 189);
+}
+
+header{
+    border-bottom: 1px solid rgb(197, 195, 195) 
+}
+
+.fa-bars{
+    font-size: 2em;
+   color: rgba(10, 10, 26, 0.651) ;
+   cursor:pointer
+}
+
+.fa-bars:hover{
+    color: rgb(10, 10, 26) ;
+}
+
+.dropdown .dropdown-toggle::after {
+    content: none; /* Hide the arrow */
+  }
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
