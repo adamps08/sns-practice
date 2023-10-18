@@ -39,7 +39,36 @@ header{
     content: none; /* Hide the arrow */
   }
 
+  @media screen and (max-width: 999px) {
+    .numberOne{
 
+        display:none;
+    }
+    .bannerLogo{
+
+    width:50%;
+
+    }
+  }
+
+ .prof-img{
+    max-width: 100%;
+ } 
+
+ .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+    gap: 1px 1px; /* Adjust the gap as needed */
+  }
+  
+  .image-item {
+    list-style: none;
+  }
+
+  .logoutBtn{
+    padding-left: 33px;
+    padding-right: 33px;
+  }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
