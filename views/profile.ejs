@@ -12,6 +12,15 @@
             Create a Post
           </button>
           <br>
+          
+          <form id="profPicForm" action="/profPic/<%= user._id%>" enctype="multipart/form-data" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <div class="mb-3">
+                <label for="imgUpload" class="form-label">Profile Pic</label>
+                <input type="file" class="form-control" id="profPicUpload" name="profPic">
+            </div>
+            <button type="submit" class="btn btn-primary" value="Upload">Upload Profile Pic</button>
+        </form>
           <br>
           
           <!-- <div class="mt-5">
