@@ -33,6 +33,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     ref: "User"
   },
+  createdByImage: {
+    type: String,
+    ref: "User"
+  },
 });
 
 module.exports = mongoose.model("Post", PostSchema);

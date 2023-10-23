@@ -4,6 +4,10 @@
       <div class="col-12">
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
+              <img class="img-fluid" id= "prof-img" src="<%= user.image%>" />
+              <% if (!user.image) { %>
+                <img class="img-fluid" src="https://res.cloudinary.com/dvgnmh1gb/image/upload/qelmhnzabhualy8tvl30.png">
+              <% } %>
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="btn btn-primary logoutBtn">Logout</a>
           </div>
@@ -12,15 +16,14 @@
             Create a Post
           </button>
           <br>
-          
-          <form id="profPicForm" action="/profPic/<%= user._id%>" enctype="multipart/form-data" method="POST">
+          <!-- <form id="profPicForm" action="/profPic/<%= user._id%>" enctype="multipart/form-data" method="POST">
             <input type="hidden" name="_method" value="PUT">
             <div class="mb-3">
                 <label for="imgUpload" class="form-label">Profile Pic</label>
                 <input type="file" class="form-control" id="profPicUpload" name="profPic">
             </div>
             <button type="submit" class="btn btn-primary" value="Upload">Upload Profile Pic</button>
-        </form>
+        </form> -->
           <br>
           
           <!-- <div class="mt-5">

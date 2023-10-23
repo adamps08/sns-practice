@@ -51,9 +51,16 @@ header{
     }
   }
 
- .prof-img{
-    max-width: 100%;
+ #prof-img{
+    max-width: 10rem;
+    border-radius: 50%;
+    
  } 
+
+ .post-image{
+    max-width: 2rem;
+    border-radius: 50%;
+ }
 
  .image-grid {
     display: grid;
