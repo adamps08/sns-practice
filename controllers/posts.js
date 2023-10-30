@@ -1,6 +1,7 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require ("../models/Comment");
+const Like = require ("../models/Likes")
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -52,18 +53,59 @@ module.exports = {
   },
   likePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          $inc: { likes: 1 },
-        }
-      );
-      console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      const existingLike = await Like.findOne({
+        user: req.user.id,
+        post: req.params.id,
+      });
+  
+      if (existingLike) {
+        await Like.findOneAndRemove({
+          user: req.user.id,
+          post: req.params.id,
+        });
+        await Post.findByIdAndUpdate(
+          req.params.id,
+          {
+            $inc: { likes: -1 },
+          }
+        );
+  
+        console.log("Like removed");
+      } else {
+        await Post.findByIdAndUpdate(
+          req.params.id,
+          {
+            $inc: { likes: 1 },
+          }
+        );
+
+        await Like.create({
+          user: req.user.id,
+          post: req.params.id,
+        });
+  
+        console.log("Like added");
+      }
+      return res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
+      return res.redirect(`/post/${req.params.id}`);
     }
   },
+  // likePost: async (req, res) => {
+  //   try {
+  //     await Post.findOneAndUpdate(
+  //       { _id: req.params.id },
+  //       {
+  //         $inc: { likes: 1 },
+  //       }
+  //     );
+  //     console.log("Likes +1");
+  //     res.redirect(`/post/${req.params.id}`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
   deletePost: async (req, res) => {
     try {
       // Find post by id
