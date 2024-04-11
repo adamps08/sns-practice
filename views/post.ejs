@@ -6,7 +6,13 @@
       <img class="img-fluid" src="<%= post.image%>" />
       <div class="text-center">
         <br>
-        <p><img class="img-fluid post-image" src="<%= post.createdByImage%>" /> <%= post.createdBy %>: <%= post.caption %></p>
+        <% if (post.user == user.id) { %>
+          
+          <p><a href="/profile"><img class="img-fluid post-image" src="<%= post.createdByImage %>" /><%= post.createdBy %> :</a> <%= post.caption %></p>
+        <% } else { %>
+      
+          <p><a href="/feed"><img class="img-fluid post-image" src="<%= post.createdByImage %>" /><%= post.createdBy %> :</a> <%= post.caption %></p>
+        <% } %>
       </div>
       <div class="row justify-content-center align-items-center">
         <div class="col-4 text-center">
