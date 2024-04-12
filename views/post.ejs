@@ -7,11 +7,9 @@
       <div class="text-center">
         <br>
         <% if (post.user == user.id) { %>
-          
           <p><a href="/profile"><img class="img-fluid post-image" src="<%= post.createdByImage %>" /><%= post.createdBy %> :</a> <%= post.caption %></p>
         <% } else { %>
-      
-          <p><a href="/feed"><img class="img-fluid post-image" src="<%= post.createdByImage %>" /><%= post.createdBy %> :</a> <%= post.caption %></p>
+          <p><a href="/profile/<%= post.user %>"><img class="img-fluid post-image" src="<%= post.createdByImage %>" /><%= post.createdBy %> :</a> <%= post.caption %></p>
         <% } %>
       </div>
       <div class="row justify-content-center align-items-center">

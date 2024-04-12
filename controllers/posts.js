@@ -2,6 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require ("../models/Comment");
 const Like = require ("../models/Likes")
+const User = require('../models/User');
 
 module.exports = {
   getProfile: async (req, res) => {
@@ -10,6 +11,20 @@ module.exports = {
       res.render("profile.ejs", { posts: posts, user: req.user });
     } catch (err) {
       console.log(err);
+    }
+  },
+  getOtherUserProfile: async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).send('User not found');
+      }
+      const posts = await Post.find({ user: userId });
+      res.render('nonuserprofile.ejs', { user, posts });
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Internal Server Error');
     }
   },
   getFeed: async (req, res) => {

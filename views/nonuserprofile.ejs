@@ -1,0 +1,47 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-12">
+          <div>
+              <p><strong>User Name</strong>: <%= user.userName %></p>
+              <img class="img-fluid" id= "prof-img" src="<%= user.image%>" />
+              <% if (!user.image) { %>
+                <img class="img-fluid" src="https://res.cloudinary.com/dvgnmh1gb/image/upload/qelmhnzabhualy8tvl30.png">
+              <% } %>
+              <p><strong>Email</strong>: <%= user.email %></p>
+              <a href="/feed" class="btn btn-primary logoutBtn">Go to Feed</a>
+          </div>
+        </br>
+         
+      
+
+          
+       
+      </div>
+
+ 
+      
+      <div class="col-12">
+        <ul class="image-grid">
+          <% for(var i=0; i<posts.length; i++) { %>
+            <li class="image-item">
+              <a href="/post/<%= posts[i]._id%>">
+                <img class="img-fluid prof-img" src="<%= posts[i].image%>">
+              </a>
+            </li>
+          <% } %>
+        </ul>
+        <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary" href="/feed">Go to Feed</a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<%- include('partials/footer') -%>
+
+
