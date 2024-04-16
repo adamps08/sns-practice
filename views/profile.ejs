@@ -4,7 +4,7 @@
       <div class="col-12">
           <div>
               <p><strong>User Name</strong>: <%= user.userName %></p>
-              <img class="img-fluid" id= "prof-img" src="<%= user.image%>" />
+              <a href="" class="override" data-bs-toggle="modal" data-bs-target="#profPicZoom"><img class="img-fluid" id= "prof-img" src="<%= user.image%>" /></a>
               <% if (!user.image) { %>
                 <img class="img-fluid" src="https://res.cloudinary.com/dvgnmh1gb/image/upload/qelmhnzabhualy8tvl30.png">
               <% } %>

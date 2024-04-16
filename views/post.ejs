@@ -63,6 +63,7 @@
            
             <%if(comments[i].createdById == user.id){ %>
             <form
+              onsubmit="return confirmDelete()"
               action="/comment/deleteComment/<%=post._id%>/<%= comments[i]._id %>?_method=DELETE"
               method="POST"
               class="col-3"
