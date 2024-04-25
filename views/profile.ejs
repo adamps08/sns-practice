@@ -8,7 +8,9 @@
                 <img class="img-fluid" id= "prof-img" src="<%= user.image%>" />
               </a>
               <% if (!user.image) { %>
-                <img class="img-fluid" src="https://res.cloudinary.com/dvgnmh1gb/image/upload/qelmhnzabhualy8tvl30.png">
+                <a href="" class="override" data-bs-toggle="modal" data-bs-target="#editPhoto">
+                 <img class="img-fluid" src="https://res.cloudinary.com/dvgnmh1gb/image/upload/qelmhnzabhualy8tvl30.png">
+                </a>
               <% } %>
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="btn btn-primary logoutBtn">Logout</a>

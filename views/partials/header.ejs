@@ -85,8 +85,8 @@
   </div>
 </div>
 
-    <!-- edit photo -->
-    <div class="modal fade" id="editPhoto" tabindex="-1" role="dialog" aria-labelledby="editPhotoLabel" aria-hidden="true">
+     <!-- edit photo -->
+     <div class="modal fade" id="editPhoto" tabindex="-1" role="dialog" aria-labelledby="editPhotoLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -98,13 +98,17 @@
           <div class="modal-body editPic-body">
             <div class="mt-5">
               <img class="img-fluid" id= "" src="<%= user.image%>" />
-              <form action="/prof/editPic" enctype="multipart/form-data" method="POST">
+              <form action="/profPic/<%= user._id%>" enctype="multipart/form-data" method="POST">
                 <div class="mb-3">
                   <label for="profPicUpload" class="form-label">Change Profile Pic</label>
                   <input type="file" class="form-control" id="profilePicUpload" name="file">
                 </div>
                 <div class="mb-3">
-                <button type="submit" class="btn btn-primary" value="Upload">Remove Current Photo</button>
+                <button type="submit" class="btn btn-primary" value="Upload">Save Photo</button>
+                </div>
+                <div class="mb-3">
+               
+                  <button type="submit" class="btn btn-primary" value="Upload">Remove Current Photo</button>
                 </div>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
               </form>
@@ -118,7 +122,6 @@
         </div>
       </div>
     </div>
-    
 
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
