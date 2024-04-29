@@ -69,13 +69,28 @@ exports.getSignup = (req, res) => {
 exports.profPic = async (req, res) => {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
-    await User.findOneAndUpdate(
-      { _id: req.params.id },
-      {
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
-      }
-    );
+    const user = await User.findById(req.params.id);
+
+    if (user.image) {
+      await User.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          image: result.secure_url,
+          cloudinaryId: result.public_id,
+        }
+      );
+    } else {
+      await User.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $set: {
+            image: result.secure_url,
+            cloudinaryId: result.public_id,
+          },
+        }
+      );
+    }
+
     console.log("Profile pic has been updated");
     res.redirect(`/profile`);
   } catch (err) {
