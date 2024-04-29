@@ -2,6 +2,7 @@ const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
 const cloudinary = require("../middleware/cloudinary");
+const Post = require('../models/Post');
 
 
 exports.getLogin = (req, res) => {
@@ -79,6 +80,7 @@ exports.profPic = async (req, res) => {
           cloudinaryId: result.public_id,
         }
       );
+      
     } else {
       await User.findOneAndUpdate(
         { _id: req.params.id },
@@ -90,7 +92,7 @@ exports.profPic = async (req, res) => {
         }
       );
     }
-
+    await Post.updateMany({ user: req.params.id }, { createdByImage: result.secure_url });
     console.log("Profile pic has been updated");
     res.redirect(`/profile`);
   } catch (err) {
