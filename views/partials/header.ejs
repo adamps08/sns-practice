@@ -108,8 +108,13 @@
                 </div>
               </form>
                 <div class="mb-3">
-               
-                  <button type="submit" class="btn btn-primary" value="Upload">Remove Current Photo</button>
+                  <form
+                  onsubmit="return confirmDeletePost()"
+                  action="deleteProfPic/<%= user._id %>?_method=DELETE"
+                  method="POST"
+                   >
+                    <button type="submit" class="btn btn-primary" value="Submit">Remove Current Photo</button>
+                 </form>
                 </div>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
              
@@ -193,7 +198,6 @@
        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" 
        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 
   </body>
 </html>

@@ -99,6 +99,20 @@ exports.profPic = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.deleteProfPic = async (req, res) => {
+  try {
+    let user = await User.findById(req.params.id);
+    await cloudinary.uploader.destroy(user.cloudinaryId);
+    await User.findByIdAndUpdate(req.params.id, { $unset: { image: 1 } });
+    console.log("Deleted Profile Pic");
+    res.redirect("/profile");
+  } catch (err) {
+    console.error(err);
+    res.redirect("/profile");
+  }
+};
+
 exports.postSignup = async (req, res, next) => {
   try {
     const validationErrors = [];
