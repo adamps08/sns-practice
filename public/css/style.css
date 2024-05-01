@@ -207,3 +207,8 @@ header{
 .editPic-body .btn {
   width: 100%;
 }
+
+.signUp-buttons {
+display:flex;
+justify-content:center;
+}
