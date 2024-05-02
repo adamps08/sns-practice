@@ -208,7 +208,8 @@ header{
   width: 100%;
 }
 
-.signUp-buttons {
+.signUp-buttons, .copyright {
 display:flex;
 justify-content:center;
 }
+
